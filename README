@@ -1,0 +1,17 @@
+initram-erasure is a dead pony's protocol for erasing your disks in case
+somepony stills you computer. It us pretty much worthless if the thief
+wants you documents and excepts that the computer is encrypted as that pony
+would just boot her own installation and hit you with a 5 dollar wrench.
+
+But if the thief does not except it she would probably not take precautions
+and computer would erase the drives when started.
+
+initram-erasure has an early hook that is totally quite erase the drives
+simultaneously in parallel once by overriding it with NUL bytes, this is
+the fasted method for erasing a drive. After this it taunts the user that
+she fell for the trapm, and then continues by 9 times filling the drives
+with random bytes instread of zero bytes. This totals in 10 overrides,
+which takes quite some time, just one override times too long. The reason
+for stopping at 10 overrides is for not wearing out the drives in case it
+was started accidentally when you where not there.
+

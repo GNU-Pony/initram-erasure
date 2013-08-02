@@ -66,10 +66,10 @@ Texts. A copy of the license is included in the section entitled
 
 @command{initram-erasure} is a dead pony's protocol for erasing your disks
 in case somepony stills you computer. It us pretty much worthless if the
-theif wants you documents and excepts that the computer is encrypted as that
+thief wants you documents and excepts that the computer is encrypted as that
 pony would just boot her own installation and hit you with a 5 dollar wrench.
 
-But you the theif does not except it she would probably not take precautions
+But if the thief does not except it she would probably not take precautions
 and computer would erase the drives when started.
 
 @command{initram-erasure} has an early hook that is totally quite erase
