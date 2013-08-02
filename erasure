@@ -1,0 +1,57 @@
+#!/usr/bin/ash
+
+
+disc_shredder() {	
+    i=0
+    while (( $i < $2 )); do
+        dd if=/dev/zero of="$1"
+	(( i++ ))
+    done
+}
+
+
+run_earlyhook() {
+    if [ ! "${edev}" = "" ]; then
+       	devices="$(echo ${edev} | sed -e 's:,: :g')"
+	
+	pids=()
+	for device in ${devices}; do
+	    pids+=( $(dd if=/dev/zero of="${device}" & echo $!) )
+	done  2>/dev/null >/dev/null
+	wait ${pids[@]}
+	
+	echo "\e[01;33mCongratulations, the drives have now been erased!"
+	echo          "Next time you try to break into somepony's computer,"
+	echo          "do not be so hasty. I bet you feel like a pretty"
+	echo          "dumb jackass right about now.\e[00m"
+	
+	# And now start shredding them for safty, but only 9 times, no reason
+	# too wear out the hard drives in case it was not actually stolen and
+	# just started by itself (not very likely for portable computers, but
+	# just in case, and because if that, do not use this on you statiory
+	# computer).
+	
+	pids=()
+	for device in ${devices}; do
+	    pids+=( $(disc_shredder "${device}" 9 & echo $!) )
+	done  2>/dev/null >/dev/null
+	wait ${pids[@]}
+	
+	# And now wait forever ...
+	
+	while true; do
+	    sleep 10
+	done
+    fi
+}
+
+
+run_hook() {
+    true
+}
+
+
+run_cleanuphook() {
+    true
+}
+
